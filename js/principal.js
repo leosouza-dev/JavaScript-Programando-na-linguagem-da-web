@@ -6,10 +6,25 @@ titulo.textContent = "Aparecida Nutricionista";
 let paciente = document.querySelector("#primeiro-paciente");
 let peso = paciente.querySelector(".info-peso").textContent;
 let altura = paciente.querySelector(".info-altura").textContent;
+let imcTd = paciente.querySelector(".info-imc");
 
-// calculo do imc
-let imc = peso / (altura * altura);
+// operadores lógico - validação
+let pesoInvalido = (peso <= 0) || (peso >= 1000);
+let alturaInvalido = (altura <= 0) || (altura >= 3);
 
-console.log(imc);
+if(pesoInvalido){
+  imcTd.textContent = "Peso Inválido";
+}
+else{
+  if(alturaInvalido){
+    imcTd.textContent = "Altura Inválida";
+  }
+  else{
+    let imc = peso / (altura * altura);
+    imcTd.textContent = imc;
+  }
+}
+
+
 
 
