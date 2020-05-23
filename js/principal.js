@@ -18,10 +18,19 @@ for (let i = 0; i < pacientes.length; i++) {
   
   if(pesoInvalido){
     imcTd.textContent = "Peso Inválido";
+
+    //alterantiva - mudando a cor da linha "tr" pelo js
+    // paciente.style.color = "lightcoral";
+
+    //add classe css
+    paciente.classList.add("paciente-invalido");
   }
   else{
     if(alturaInvalido){
       imcTd.textContent = "Altura Inválida";
+
+      //add classe css
+      paciente.classList.add("paciente-invalido");
     }
     else{
       let imc = peso / (altura * altura);
@@ -31,31 +40,10 @@ for (let i = 0; i < pacientes.length; i++) {
   
 }
 
-// Outra opção - ForEach
-// pacientes.forEach(paciente => {
 
-//   let peso = paciente.querySelector(".info-peso").textContent;
-//   let altura = paciente.querySelector(".info-altura").textContent;
-//   let imcTd = paciente.querySelector(".info-imc");
-  
-//   // operadores lógico - validação
-//   let pesoInvalido = (peso <= 0) || (peso >= 1000);
-//   let alturaInvalido = (altura <= 0) || (altura >= 3);
-  
-//   if(pesoInvalido){
-//     imcTd.textContent = "Peso Inválido";
-//   }
-//   else{
-//     if(alturaInvalido){
-//       imcTd.textContent = "Altura Inválida";
-//     }
-//     else{
-//       let imc = peso / (altura * altura);
-//       imcTd.textContent = imc;
-//     }
-//   }
-  
-// });
+//
+
+
 
 
 
