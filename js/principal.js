@@ -44,8 +44,10 @@ for (let i = 0; i < pacientes.length; i++) {
 //eventos do browser - evento click
 let btnAdicionaPaciente = document.querySelector("#adicionar-paciente");
 
-btnAdicionaPaciente.addEventListener("click", function(){
-  alert("eu fui clicado!");
+btnAdicionaPaciente.addEventListener("click", function(event){
+  //evita o reload
+  event.preventDefault();
+  console.log("eu fui clicado!");
 });
 
 
