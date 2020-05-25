@@ -33,11 +33,15 @@ for (let i = 0; i < pacientes.length; i++) {
       paciente.classList.add("paciente-invalido");
     }
     else{
-      let imc = peso / (altura * altura);
-      imcTd.textContent = imc.toFixed(2);
+      let imc = calculaImc(peso, altura);
+      imcTd.textContent = imc;
     }
   }
   
+}
+
+function calculaImc(peso, altura){
+  return (peso / (altura * altura)).toFixed(2);
 }
 
 
