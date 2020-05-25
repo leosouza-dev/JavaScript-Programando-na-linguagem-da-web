@@ -41,11 +41,12 @@ for (let i = 0; i < pacientes.length; i++) {
 }
 
 
-//
+//eventos do browser - evento click
+let btnAdicionaPaciente = document.querySelector("#adicionar-paciente");
 
-
-
-
+btnAdicionaPaciente.addEventListener("click", function(){
+  alert("eu fui clicado!");
+});
 
 
 
