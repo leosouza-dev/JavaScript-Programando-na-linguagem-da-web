@@ -3,6 +3,7 @@ let btnAdicionaPaciente = document.querySelector("#adicionar-paciente");
 btnAdicionaPaciente.addEventListener("click", function(event){
   event.preventDefault();
   
+  
   let form = document.querySelector("#form-adiciona");
   let paciente = obtemPacienteDoFormulario(form);
 
@@ -61,6 +62,12 @@ function montaTd(dado, classe){
 function validaPaciente(paciente){
   let erros = [];
 
+  if(paciente.nome.length == 0)
+    erros.push("Nome não pode ser em branco");
+
+  if(paciente.gordura.length == 0)
+    erros.push("Gordura não pode ser em branco");
+
   if(!validaPeso(paciente.peso)) 
     erros.push("Peso Inválido");
 
@@ -72,6 +79,9 @@ function validaPaciente(paciente){
 
 function exibeMensagensDeErro(erros){
   let listaDeErros = document.querySelector("#mensagem-erro");
+
+  //limpando as mensagens de erro!
+  listaDeErros.innerHTML = "";
 
   erros.forEach(erro => {
     let li = document.createElement("li");
