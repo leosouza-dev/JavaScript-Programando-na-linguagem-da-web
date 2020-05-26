@@ -7,6 +7,11 @@ btnAdicionaPaciente.addEventListener("click", function(event){
   let form = document.querySelector("#form-adiciona");
   let paciente = obtemPacienteDoFormulario(form);
 
+  if(!validaPaciente(paciente)){
+    alert("paciente invalido!")
+    return;
+  }
+
   let pacienteTr = montaTr(paciente);
 
   let tabela = document.querySelector("#tabela-pacientes");
@@ -14,6 +19,7 @@ btnAdicionaPaciente.addEventListener("click", function(event){
 
   //limpa o formulário
   form.reset();
+
 });
 
 
@@ -52,4 +58,12 @@ function montaTd(dado, classe){
   td.classList.add(classe)
 
   return td;
+}
+
+function validaPaciente(paciente){
+  if(validaPeso(paciente.peso) && validaAltura(paciente.altura)){
+    return true;
+  }
+
+  return false;
 }
