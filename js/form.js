@@ -1,4 +1,3 @@
-//eventos do browser - evento click
 let btnAdicionaPaciente = document.querySelector("#adicionar-paciente");
 
 btnAdicionaPaciente.addEventListener("click", function(event){
@@ -7,8 +6,10 @@ btnAdicionaPaciente.addEventListener("click", function(event){
   let form = document.querySelector("#form-adiciona");
   let paciente = obtemPacienteDoFormulario(form);
 
-  if(!validaPaciente(paciente)){
-    alert("paciente invalido!")
+  let erros = validaPaciente(paciente);
+
+  if(erros.length > 0){
+    exibeMensagensDeErro(erros);
     return;
   }
 
@@ -17,15 +18,12 @@ btnAdicionaPaciente.addEventListener("click", function(event){
   let tabela = document.querySelector("#tabela-pacientes");
   tabela.appendChild(pacienteTr);
 
-  //limpa o formulário
   form.reset();
-
 });
 
 
 function obtemPacienteDoFormulario(form){
 
-  // usando um objeto - json
   let paciente = {
     "nome": form.nome.value,
     "peso": form.peso.value,
@@ -61,9 +59,24 @@ function montaTd(dado, classe){
 }
 
 function validaPaciente(paciente){
-  if(validaPeso(paciente.peso) && validaAltura(paciente.altura)){
-    return true;
-  }
+  let erros = [];
 
-  return false;
+  if(!validaPeso(paciente.peso)) 
+    erros.push("Peso Inválido");
+
+  if(!validaAltura(paciente.altura))
+    erros.push("Altura Inválida");
+
+  return erros;
+}
+
+function exibeMensagensDeErro(erros){
+  let listaDeErros = document.querySelector("#mensagem-erro");
+
+  erros.forEach(erro => {
+    let li = document.createElement("li");
+    li.textContent = erro;
+
+    listaDeErros.appendChild(li);
+  });
 }
