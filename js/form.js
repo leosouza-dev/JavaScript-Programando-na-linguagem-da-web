@@ -19,6 +19,10 @@ btnAdicionaPaciente.addEventListener("click", function(event){
   let tabela = document.querySelector("#tabela-pacientes");
   tabela.appendChild(pacienteTr);
 
+  // apaga as mensagens de erro
+  let listaDeErros = document.querySelector("#mensagem-erro");
+  listaDeErros.innerHTML = "";
+
   form.reset();
 });
 
@@ -80,7 +84,7 @@ function validaPaciente(paciente){
 function exibeMensagensDeErro(erros){
   let listaDeErros = document.querySelector("#mensagem-erro");
 
-  //limpando as mensagens de erro!
+  //limpando as mensagens de erro - todas as li's!
   listaDeErros.innerHTML = "";
 
   erros.forEach(erro => {
