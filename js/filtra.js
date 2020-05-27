@@ -5,8 +5,10 @@ campoFiltro.addEventListener("input", function(){
   if(this.value.length > 0){
     pacientes.forEach(paciente => {
       let nome = paciente.querySelector(".info-nome").textContent;
+
+      let expressaoRegular = new RegExp(this.value, "i")
       
-      if(nome != this.value){
+      if(!expressaoRegular.test(nome)){
         paciente.classList.add("invisivel");
       }else{
         paciente.classList.remove("invisivel");
