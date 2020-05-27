@@ -14,12 +14,9 @@ btnAdicionaPaciente.addEventListener("click", function(event){
     return;
   }
 
-  let pacienteTr = montaTr(paciente);
-
-  let tabela = document.querySelector("#tabela-pacientes");
-  tabela.appendChild(pacienteTr);
-
-  // apaga as mensagens de erro
+  //isolando em uma função
+  adiconaPacienteNaTabela(paciente)
+  
   let listaDeErros = document.querySelector("#mensagem-erro");
   listaDeErros.innerHTML = "";
 
@@ -93,4 +90,11 @@ function exibeMensagensDeErro(erros){
 
     listaDeErros.appendChild(li);
   });
+}
+
+function adiconaPacienteNaTabela(paciente){
+  let pacienteTr = montaTr(paciente);
+
+  let tabela = document.querySelector("#tabela-pacientes");
+  tabela.appendChild(pacienteTr);
 }
